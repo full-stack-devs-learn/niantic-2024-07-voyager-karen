@@ -51,24 +51,36 @@ public class Main
         // Variable name: name
         // Data Type: string (names/words are strings)
 
+        String name;
+        name = "Karen";
+        System.out.println("Name: " + name);
 
 
         // 2. Declare a variable to hold your age.
         // Variable name: age
         // Data Type: int (age is a whole number)
 
+        int age;
+        age = 28;
+        System.out.println("Age: " + age);
 
 
         // 3. Declare a variable that holds the first 5 digits of PI.
         // Variable name: pi
         // Data Type: double (pi is a number with decimal places)
 
-
+        double pi;
+        pi = 3.1415;
+        System.out.println("First 5 digits of PI: " + pi);
 
         // 4. Declare a variable holds the price of
         // an adult meal at the buffet.
         // Variable name: price
         // Data Type: double (price contains a dollar and cent value)
+
+        double price;
+        price = 0;
+        System.out.println("Adult Meal Price: " + price);
 
         // NOTE: the decimal data type  is not automatically recognized
         // see lecture notes
@@ -95,6 +107,10 @@ public class Main
         // 5. Declare a variable to store the name of your
         // favorite super hero.
 
+        String fave_super_hero;
+        fave_super_hero = "Spider-Man";
+        System.out.println("Favorite Superhero: " + fave_super_hero);
+
         // Hint: You cannot use the same variable name
         // as a variable that you have used before.
 
@@ -105,39 +121,62 @@ public class Main
         // questions and each question is worth 1 point.
         // (You can choose the score)
 
-
+        int test_score;
+        test_score = 98;
+        System.out.print("Test Score: " + test_score);
 
         // 7. Declare a variable that holds the current
         // population in the United States.
         // (search what the population is today)
 
-
+        double current_us_population;
+        current_us_population = 333.3;
+        System.out.println("Current U.S Population " + current_us_population);
 
         // 8. Declare a variable that holds the current
         // population in China.
         // (search what the population is today)
 
+        double current_china_population;
+        current_china_population = 1.412;
+        System.out.println("Current China Population: " + current_china_population);
 
 
         // 9. Declare a variable that holds the current
         // population in the world.
         // (search what the population is today)
 
+        double current_world_population;
+        current_world_population = 7.951;
+        System.out.println("Current World Population: " + current_world_population);
 
 
         // 10. Declare a variable that specifies whether
         // or not your mouse is wireless.
 
-
+        boolean is_mouse_wireless;
+        is_mouse_wireless = true;
+        System.out.println("Wireless Mouse? " + is_mouse_wireless);
 
         // 11. Search what the Latitude and Longitude of your
         // home town are. Then declare 2 variables
         // to store the Latitude and Longitude.
 
+        double sanjose_latitude;
+        double sanjose_longitude;
+        sanjose_latitude = 37.3387;
+        sanjose_longitude = 121.8853;
+        System.out.println("San Jose Latitude and Longitude: " + sanjose_latitude + ", " + sanjose_longitude);
 
 
         // 12. Create a variable that holds the current
         // Microsoft stock price.
+
+        double microsoft_stock_price;
+        microsoft_stock_price = 444.85;
+        System.out.println("Microsoft Stock Price: " + microsoft_stock_price);
+
+
     }
     
     public static void section03()
@@ -173,22 +212,48 @@ public class Main
         // 13. In his last basketball game Pete made 7 shots,
         // but missed 3 of his shots.
 
+        int shots_pete_made;
+        int shots_pete_missed;
+        shots_pete_made = 7;
+        shots_pete_missed = 3;
+
         // How many shots did Pete take?
+
+        int shots_pete_took;
+        shots_pete_took = shots_pete_made + shots_pete_missed;
+        System.out.println("Pete took " + shots_pete_took + " shots.");
 
 
 
         // 14. In his previous basketball game Pete took 20 shots.
         // He missed 6 shots, and he made 3 three point shots.
 
+        int shots_took_by_pete;
+        int shots_missed_by_pete;
+        int three_point_shots_by_pete;
+        shots_took_by_pete = 20;
+        shots_missed_by_pete = 6;
+        three_point_shots_by_pete = 3 * 3;
+
         // How many 2 point shots did Pete make?\
+        int two_points_shots_by_pete;
+        two_points_shots_by_pete = (shots_took_by_pete - shots_missed_by_pete) / 2;
+        System.out.println("Pete made " + two_points_shots_by_pete+ " two point shots");
 
 
 
         // 15. Pete and Pat are teammates. Pete made 6 shots.
         // Pat made twice as many shots as Pete.
 
-        // How many total shots did they make?
+        int shots_taken_by_pete;
+        int shots_pat_made;
+        shots_taken_by_pete = 6;
+        shots_pat_made = shots_taken_by_pete * 2;
 
+        // How many total shots did they make?
+        int total_shots;
+        total_shots = shots_taken_by_pete + shots_pat_made;
+        System.out.println("Total shots made by Pete and Pat: " + total_shots);
 
 
         // 16. Pete has made 13 shots, Pat has made 9.
@@ -196,24 +261,54 @@ public class Main
         // before the game ends, how many total shots
         // did the Terrifying Twosome make in the game?
 
+        int shots_made_from_pete;
+        int shots_made_by_pat;
+        shots_made_from_pete = 13 + 1;
+        shots_made_by_pat = 9 + 1;
+
+        int twosome_total_shots = shots_made_from_pete + shots_made_by_pat;
+        System.out.println("The Terrifying Twosome made " + twosome_total_shots + " total shots in the game.");
 
 
         // 17. In his last game Pete made 11 shots.
         // he missed 4 shots.
 
+        int last_game_shots_made_by_pete;
+        int last_game_missed_made_by_pete;
+        last_game_shots_made_by_pete = 11;
+        last_game_missed_made_by_pete = 4;
+
         // What percentage of his shots did he make?
-
-
+        float total_shots_taken_pete;
+        total_shots_taken_pete = last_game_shots_made_by_pete + last_game_missed_made_by_pete;
+        double percentage_of_shots_by_pete = (double) (last_game_shots_made_by_pete / total_shots_taken_pete) * 100;
+        System.out.println("Percent of shots Pete made: " + (int) percentage_of_shots_by_pete + "%");
 
 
         // 18. Pete and Pat have decided to only take 3 point
         // shots in their next game. Together they make 70%
         // of their 3 point shots.
 
+        double percent_of_three_points_made;
+        percent_of_three_points_made = 0.7;
+
         // The team that they are playing scores 31 points a game.
+
+        int team_score;
+        team_score = 31;
 
         // How many shots do Pete and Pat have to take to win
         // this game?
+
+        float target_score;
+        target_score = (float) (team_score + 1) / 3;
+        int shots_needed_to_win = (int) (target_score / percent_of_three_points_made);
+        System.out.println("Pete and Pat need to make "+ shots_needed_to_win +" shots to win this game.");
+
+
+
+
+
     }
     
     public static void clairesCookies()
