@@ -2,6 +2,7 @@ package com.niantic;
 
 public class BackyardBasketball
 {
+
     /*
      * Teams that play in the backyard league want to be able
      * to calculate their winning percentage.
@@ -24,7 +25,11 @@ public class BackyardBasketball
      */
     public int calculateWinningPercentage(int gamesWon, int gamesLost)
     {
-        return 0;
+
+        double total_games = gamesWon + gamesLost;
+        double percent_of_winning_games = (double) (gamesWon / total_games) * 100;
+
+        return (int) percent_of_winning_games;
     }
 
 
@@ -43,7 +48,18 @@ public class BackyardBasketball
      */
     public int calculatePointsScored(int shotPercentage, int shotsTaken, boolean isThree)
     {
-        return 0;
+
+        double percent_point = shotPercentage / shotsTaken;
+        int total_points_scored = 0;
+        if (isThree == true)
+        {
+            total_points_scored = (int) (percent_point * 3);
+        }
+        else if(isThree == false)
+        {
+            total_points_scored = (int) (percent_point * 2);
+        }
+        return total_points_scored;
     }
 
 
@@ -69,6 +85,14 @@ public class BackyardBasketball
      */
     public int calculateShotsRequired(int shotPercentage, int desiredScore, boolean isThree)
     {
+       // int shot_needed = shotPercentage / desiredScore;
+       // int shots_required = 0;
+       // if (false)
+     //   {
+         //   shots_required = shot_needed * 2;;
+
+      //  }
+
         return 0;
     }
 }

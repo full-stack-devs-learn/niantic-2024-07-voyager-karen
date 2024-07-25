@@ -7,7 +7,7 @@ public class ClairesCookies
 
     /*
      * Claire's cookies cost $12.95 a dozen.
-     *
+
      * A customer places an order with a quantity
      * of how many dozen cookies they want to order.
      *
@@ -21,7 +21,11 @@ public class ClairesCookies
      */
     public double calculateSubtotal(int quantity)
     {
-        return 0;
+        double claires_cookie_cost = 12.95;
+        double total_cost = quantity * claires_cookie_cost;
+
+
+        return total_cost;
     }
 
     /*
@@ -43,7 +47,11 @@ public class ClairesCookies
      */
     public double calculateTotal(int quantity)
     {
-        return 0;
+
+        double taxable_total = calculateSubtotal(quantity) * TaxRate;
+        double grand_total_cost = calculateSubtotal(quantity) + taxable_total;
+
+        return grand_total_cost;
     }
 
     /*
@@ -75,7 +83,17 @@ public class ClairesCookies
      */
     public double calculateQuickOrder(int snickerDozen, int chocolateDozen, int frostedDozen)
     {
-        return 0;
+        // taxrate = .0575
+        double snicker_doodles_cost = (12.95 * snickerDozen) + TaxRate;
+        double choco_chip_cost =  (13.95 * chocolateDozen) + TaxRate;
+        double frosted_choco_chip_cost = (15.95 * frostedDozen) + TaxRate;
+
+        double sub_total_quick_order = snicker_doodles_cost + choco_chip_cost + frosted_choco_chip_cost;
+
+        double tax_sub_total = (snicker_doodles_cost + choco_chip_cost + frosted_choco_chip_cost) * TaxRate;
+        double total_quick_order = sub_total_quick_order + tax_sub_total;
+
+        return total_quick_order;
     }
 
 
@@ -101,9 +119,43 @@ public class ClairesCookies
      * calculateCustomOrder (3, false, true) -> 47.43
      * calculateCustomOrder (5, true, false) -> 73.76
      */
-    public double calculateCustomOrder (int quantity, boolean hasChocolateChips, boolean hasFrosting)
-    {
-        return 0;
+    public double calculateCustomOrder (int quantity, boolean hasChocolateChips, boolean hasFrosting) {
+
+        double choco_chip_price = 1.00;
+        double frosting_price = 2.00;
+        double custom_order_subtotal = calculateTotal(quantity);
+
+        if (hasChocolateChips)
+        {
+            custom_order_subtotal += choco_chip_price * quantity;
+        }
+        if (hasFrosting)
+        {
+            custom_order_subtotal += frosting_price * quantity;
+        }
+
+        return custom_order_subtotal;
+
     }
+       // if (hasChocolateChips == true && hasFrosting == true)
+       // {
+        //    custom_order_subtotal = calculateTotal(quantity) + choco_chip_price + frosting_price;
+        //}
+        // else if (hasChocolateChips == true && hasFrosting == false)
+        // {
+        //    custom_order_subtotal = calculateTotal(quantity) + (choco_chip_price * quantity);
+        // }
+        // else if (hasChocolateChips == false && hasFrosting == true)
+        // {
+        //    custom_order_subtotal = calculateTotal(quantity) + (frosting_price * quantity);
+        // }
+        // else
+        // {
+         //   custom_order_subtotal = calculateTotal(quantity);
+        //}
+
+
+
+
 
 }
