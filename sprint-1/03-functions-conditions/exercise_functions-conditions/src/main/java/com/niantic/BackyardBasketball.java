@@ -32,7 +32,6 @@ public class BackyardBasketball
         return (int) percent_of_winning_games;
     }
 
-
     /*
      * The calculatePointsScored function should calculate
      * the number of points a player scored in a game.
@@ -49,17 +48,17 @@ public class BackyardBasketball
     public int calculatePointsScored(int shotPercentage, int shotsTaken, boolean isThree)
     {
 
-        double percent_point = shotPercentage / shotsTaken;
-        int total_points_scored = 0;
-        if (isThree == true)
+        double amountPlayerScored = (shotPercentage / 100.0) * shotsTaken;
+
+        if (isThree)
         {
-            total_points_scored = (int) (percent_point * 3);
-        }
-        else if(isThree == false)
+            amountPlayerScored *= 3.0;
+        } else
         {
-            total_points_scored = (int) (percent_point * 2);
+            amountPlayerScored *= 2.0;
         }
-        return total_points_scored;
+        double totalPercentPoint = Math.round(amountPlayerScored);
+        return (int) totalPercentPoint;
     }
 
 
@@ -85,14 +84,22 @@ public class BackyardBasketball
      */
     public int calculateShotsRequired(int shotPercentage, int desiredScore, boolean isThree)
     {
-       // int shot_needed = shotPercentage / desiredScore;
-       // int shots_required = 0;
-       // if (false)
-     //   {
-         //   shots_required = shot_needed * 2;;
+        // step 1: calculate needed baskets
+        double madeBaskets;
+        int requiredShots;
 
-      //  }
+        if (isThree == true)
+        {
+            madeBaskets = desiredScore / 3.0;
+        }
+        else
+        {
+            madeBaskets = desiredScore / 2.0;
 
-        return 0;
+        }
+        madeBaskets = Math.ceil(madeBaskets);
+        double actualPercentage = (100.0 / shotPercentage);
+        requiredShots = (int) Math.ceil(actualPercentage * madeBaskets);
+        return requiredShots;
     }
 }

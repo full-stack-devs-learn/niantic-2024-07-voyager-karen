@@ -123,39 +123,22 @@ public class ClairesCookies
 
         double choco_chip_price = 1.00;
         double frosting_price = 2.00;
-        double custom_order_subtotal = calculateTotal(quantity);
+        double extraCost = 0;
 
         if (hasChocolateChips)
         {
-            custom_order_subtotal += choco_chip_price * quantity;
+            extraCost = choco_chip_price * quantity;
         }
         if (hasFrosting)
         {
-            custom_order_subtotal += frosting_price * quantity;
+            extraCost = frosting_price * quantity;
         }
 
-        return custom_order_subtotal;
+        double finalCustomTotal =  calculateTotal(quantity) + extraCost;
+
+        return Math.round(finalCustomTotal);
 
     }
-       // if (hasChocolateChips == true && hasFrosting == true)
-       // {
-        //    custom_order_subtotal = calculateTotal(quantity) + choco_chip_price + frosting_price;
-        //}
-        // else if (hasChocolateChips == true && hasFrosting == false)
-        // {
-        //    custom_order_subtotal = calculateTotal(quantity) + (choco_chip_price * quantity);
-        // }
-        // else if (hasChocolateChips == false && hasFrosting == true)
-        // {
-        //    custom_order_subtotal = calculateTotal(quantity) + (frosting_price * quantity);
-        // }
-        // else
-        // {
-         //   custom_order_subtotal = calculateTotal(quantity);
-        //}
-
-
-
 
 
 }
