@@ -127,16 +127,16 @@ public class ClairesCookies
 
         if (hasChocolateChips)
         {
-            extraCost = choco_chip_price * quantity;
+            extraCost += choco_chip_price * quantity * (1 + TaxRate);
         }
         if (hasFrosting)
         {
-            extraCost = frosting_price * quantity;
+            extraCost += frosting_price * quantity * (1 + TaxRate);
         }
 
         double finalCustomTotal =  calculateTotal(quantity) + extraCost;
-
-        return Math.round(finalCustomTotal);
+      //  System.out.println(finalCustomTotal);
+        return finalCustomTotal;
 
     }
 
