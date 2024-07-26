@@ -17,7 +17,7 @@ public class ExercisesChallenge
      * sumFirst2Numbers([3])             =>  3
      * sumFirst2Numbers([])              =>  0
      */
-    public int sumFirst2Numbers(int[] numbers)
+    public int sumFirst2Numbers(int[] numbers);
     {
         return -1;
     }

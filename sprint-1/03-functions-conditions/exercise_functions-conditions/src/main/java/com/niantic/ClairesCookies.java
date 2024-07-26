@@ -21,11 +21,11 @@ public class ClairesCookies
      */
     public double calculateSubtotal(int quantity)
     {
-        double claires_cookie_cost = 12.95;
-        double total_cost = quantity * claires_cookie_cost;
+        double clairesCookieCost = 12.95;
+        double subTotalCost = quantity * clairesCookieCost;
 
 
-        return total_cost;
+        return subTotalCost;
     }
 
     /*
@@ -48,10 +48,10 @@ public class ClairesCookies
     public double calculateTotal(int quantity)
     {
 
-        double taxable_total = calculateSubtotal(quantity) * TaxRate;
-        double grand_total_cost = calculateSubtotal(quantity) + taxable_total;
+        double taxableTotal = calculateSubtotal(quantity) * TaxRate;
+        double grandTotalCost = calculateSubtotal(quantity) + taxableTotal;
 
-        return grand_total_cost;
+        return grandTotalCost;
     }
 
     /*
@@ -84,16 +84,16 @@ public class ClairesCookies
     public double calculateQuickOrder(int snickerDozen, int chocolateDozen, int frostedDozen)
     {
         // taxrate = .0575
-        double snicker_doodles_cost = (12.95 * snickerDozen) + TaxRate;
-        double choco_chip_cost =  (13.95 * chocolateDozen) + TaxRate;
-        double frosted_choco_chip_cost = (15.95 * frostedDozen) + TaxRate;
+        double snickerDozenCost = (12.95 * snickerDozen) + TaxRate;
+        double chocoChipDozenCost =  (13.95 * chocolateDozen) + TaxRate;
+        double frostedChipDozenCost = (15.95 * frostedDozen) + TaxRate;
 
-        double sub_total_quick_order = snicker_doodles_cost + choco_chip_cost + frosted_choco_chip_cost;
+        double subTotalQuickOrder = snickerDozenCost + chocoChipDozenCost + frostedChipDozenCost;
 
-        double tax_sub_total = (snicker_doodles_cost + choco_chip_cost + frosted_choco_chip_cost) * TaxRate;
-        double total_quick_order = sub_total_quick_order + tax_sub_total;
+        double taxSubTotal = (snickerDozenCost + chocoChipDozenCost + frostedChipDozenCost) * TaxRate;
+        double totalQuickOrder = subTotalQuickOrder + taxSubTotal;
 
-        return total_quick_order;
+        return totalQuickOrder;
     }
 
 
@@ -121,17 +121,17 @@ public class ClairesCookies
      */
     public double calculateCustomOrder (int quantity, boolean hasChocolateChips, boolean hasFrosting) {
 
-        double choco_chip_price = 1.00;
-        double frosting_price = 2.00;
+        double chocoChipPrice = 1.00;
+        double frostingPrice = 2.00;
         double extraCost = 0;
 
         if (hasChocolateChips)
         {
-            extraCost += choco_chip_price * quantity * (1 + TaxRate);
+            extraCost += chocoChipPrice * quantity * (1 + TaxRate);
         }
         if (hasFrosting)
         {
-            extraCost += frosting_price * quantity * (1 + TaxRate);
+            extraCost += frostingPrice * quantity * (1 + TaxRate);
         }
 
         double finalCustomTotal =  calculateTotal(quantity) + extraCost;

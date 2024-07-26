@@ -12,6 +12,7 @@ public class Exercises
     public String[] daysOfTheWeek()
     {
         String[] daysOfTheWeek = new String[] {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+
         return daysOfTheWeek;
 
     }
@@ -347,6 +348,6 @@ public class Exercises
         }
         return lowestPrice;
     }
-    
+
 
 }
