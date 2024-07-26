@@ -337,7 +337,16 @@ public class Exercises
      */
     public double lowestValue(double[] prices)
     {
-        return -1;
+        double lowestPrice = prices[0];
+
+        for (int i = 1; i < prices.length; i++) {
+
+            if (prices[i] < lowestPrice) {
+                lowestPrice = prices[i];
+            }
+        }
+        return lowestPrice;
     }
+    
 
 }
