@@ -17,8 +17,17 @@ public class ExercisesChallenge
      * sumFirst2Numbers([3])             =>  3
      * sumFirst2Numbers([])              =>  0
      */
-    public int sumFirst2Numbers(int[] numbers);
+    public int sumFirst2Numbers(int[] numbers)
     {
+
+        int number = 0;
+
+       // for (int i = 0; i < numbers.length)
+        //{
+          //  if (numbers[i]
+
+        //}
+
         return -1;
     }
 

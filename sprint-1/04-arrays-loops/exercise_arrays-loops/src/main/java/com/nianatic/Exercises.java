@@ -139,9 +139,9 @@ public class Exercises
      */
     public String monthName(String[] months, int monthNumber)
     {
-        String[] monthName = new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
 
-        return monthName[monthNumber - 1];
+        return months[monthNumber - 1];
+
     }
 
     /*
