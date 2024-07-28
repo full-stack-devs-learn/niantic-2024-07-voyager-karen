@@ -57,21 +57,57 @@ public class Main
 
     private static void createNewTestScores()
     {
-        System.out.println("Enter code to create a new array and ask for test scores");
+        System.out.print("How many test scores would you like to enter?");
+        int newTestScores = Integer.parseInt(userInput.nextLine());
+        scores = new int[newTestScores];
+
+        for (int i = 0; i < newTestScores; i++)
+        {
+            System.out.print("Enter scores " + (i + 1) + ": ");
+            int score = Integer.parseInt(userInput.nextLine());
+
+            scores[i] = score;
+        }
+      //  System.out.println("Enter code to create a new array and ask for test scores");
+        //userInput.nextLine();
     }
 
     private static void calculateAverage()
     {
-        System.out.println("Add logic to calculate the average of all test scores, and display it");
+
+        int sumOfScores = 0;
+        for (int score : scores) {
+            sumOfScores += score;
+        }
+        int averageTotal = sumOfScores / scores.length;
+
+        System.out.println("The average score is: " + averageTotal);
     }
 
     private static void findHighestScore()
     {
-        System.out.println("Find the highest score of all tests and display it");
+        int highestScore = scores[0];
+        for (int i = 0; i < scores.length; i++) {
+            if (scores[i] > highestScore) {
+                highestScore = scores[i];
+            }
+        }
+        System.out.println("The highest score is: " + highestScore);
     }
 
     private static void findLowestScore()
     {
-        System.out.println("Find the lowest score of all tests and display it");
+        int lowestScore = scores[0];
+
+        for (int i = 0; i < scores.length; i++)
+        {
+            if (scores[i] < lowestScore)
+            {
+                lowestScore = scores[i];
+            }
+
+        }
+
+        System.out.println("The lowest score is: " + lowestScore);
     }
 }
