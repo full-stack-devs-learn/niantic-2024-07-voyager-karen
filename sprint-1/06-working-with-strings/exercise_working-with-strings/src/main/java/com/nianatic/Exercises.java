@@ -1,5 +1,6 @@
 package com.nianatic;
 
+
 public class Exercises
 {
     /*
@@ -18,7 +19,15 @@ public class Exercises
      */
     public String changeCase(String word, boolean toUpperCase)
     {
-        return null;
+        String newWord;
+        if (toUpperCase) {
+            newWord = word.toUpperCase();
+
+        } else {
+            newWord = word.toLowerCase();
+        }
+
+        return newWord;
     }
 
     /*
@@ -49,7 +58,24 @@ public class Exercises
      */
     public String createHtml(String content, String elementName)
     {
-        return null;
+        String newSentence = "";
+        if (elementName.equals("p"))
+        {
+            newSentence = "<p>" + content + "</p>";
+        }
+        if (elementName.equals("strong"))
+        {
+            newSentence = "<strong>" + content + "</strong>";
+        }
+        if (elementName.equals("quote"))
+        {
+            newSentence = "<quote>" + content + "</quote>";
+        }
+        if (elementName.equals("em"))
+        {
+            newSentence = "<em>" + content + "</em>";
+        }
+        return newSentence;
     }
 
     /*
@@ -71,7 +97,33 @@ public class Exercises
      */
     public String moreHtml(String content, String elementName)
     {
-        return null;
+        String newSentence = "";
+
+        switch (elementName) {
+            case "p":
+                if (content.isEmpty()) {
+                    newSentence = "<p />";
+                } else {
+                    newSentence = "<p>" + content + "</p>";
+                }
+                break;
+            case "strong":
+                if (content.isEmpty()) {
+                    newSentence = "<strong>" + "Text" + "</strong>";
+                } else {
+                    newSentence = "<strong>" + content + "</strong>";
+                }
+                break;
+            case "quote":
+                if (content.isEmpty()) {
+                    newSentence = "<quote />";
+                } else {
+                    newSentence = "<quote>" + content + "</quote>";
+                }
+
+        }
+
+        return newSentence;
     }
 
     /*
@@ -94,7 +146,7 @@ public class Exercises
      */
     public String createXml(int id, String name)
     {
-        return  null;
+        return  "<customer>" + "<id>" + id + "</id>" + "<name>" + name + "</name>" + "</customer>";
     }
 
     /*
@@ -131,7 +183,9 @@ public class Exercises
      */
     public String formattedXml(int id, String name)
     {
-        return null;
+
+        return  "<customer>\n" + "  "+ "<id>" + id + "</id>" + "\n  " + "<name>" + name + "</name>" + "\n</customer>";
+
     }
 
     /*
@@ -155,7 +209,22 @@ public class Exercises
      */
     public String formatFullName(String firstName, String middleName, String lastName, String suffix)
     {
-        return  null;
+        String newName = "";
+        if (!middleName.isEmpty())
+        {
+            newName = firstName + " " +  middleName + " " + lastName;
+        }
+        if (!suffix.isEmpty())
+        {
+        newName = firstName + " " + middleName + " " + lastName + ", " + suffix;
+        }   if (!suffix.isEmpty() && middleName.isEmpty()) {
+            newName = firstName + " " + lastName + ", " + suffix;
+    }
+        if (middleName.isEmpty() && suffix.isEmpty())
+        {
+            newName = firstName + " " + lastName;
+        }
+        return newName;
     }
 
     /*
@@ -186,6 +255,37 @@ public class Exercises
      */
     public String createUserName(String fullName)
     {
-        return null;
+        String userName = "";
+
+        // input name: Glen Williamson, III => ["glen williamson", "iii"]
+        // the [0] accesses the first element before the "," which is "glen williamson"
+        String removeSuffix = fullName.toLowerCase().split(",")[0];
+
+        // strip any white space and use split by space " " to get => ["Glen", "Williamson"]
+        String[] nameParts = removeSuffix.strip().split(" ");
+
+        String firstName = nameParts[0];
+        String middleInitial = "";
+        String lastName = nameParts[nameParts.length - 1];
+
+        String middlePart;
+
+        // converting middle name to initial (Glen Carter Williamson => glen.c.williamson)
+        if (nameParts.length == 3)
+        {
+            middleInitial = nameParts[1].substring(0,1) + ".";
+            userName = firstName + "." + middleInitial + lastName;
+        }
+
+        // checking if middle name is empty
+        if (middleInitial.isEmpty())
+        {
+            middlePart = ".";
+            userName = firstName + middlePart + lastName;
+        }
+
+
+
+        return userName;
     }
 }
