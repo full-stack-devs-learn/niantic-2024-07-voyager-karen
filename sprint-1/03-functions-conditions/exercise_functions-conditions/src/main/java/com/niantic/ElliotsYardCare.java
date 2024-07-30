@@ -21,7 +21,21 @@ public class ElliotsYardCare
      */
     public double  calculateCost(int width, int length, boolean  isTrimming)
     {
-        return 0;
+
+        double sqFeetCost = 1000;
+        double withOutTrimming = 2.50;
+        double withTrimming = 3.00;
+
+        double totalSqFeet = (width * length) / sqFeetCost;
+
+        if (isTrimming)
+        {
+            totalSqFeet *= withTrimming;
+        } else {
+            totalSqFeet *= withOutTrimming;
+        }
+
+        return totalSqFeet;
     }
 
     /*
@@ -41,7 +55,9 @@ public class ElliotsYardCare
      */
     public double  calculateProfit(int width, int length, boolean  isTrimming, int amountCharged)
     {
-        return 0;
+
+        double totalProfit = (double) amountCharged - calculateCost(width, length, isTrimming);
+        return totalProfit;
     }
 
     /*
@@ -62,7 +78,17 @@ public class ElliotsYardCare
      */
     public double calculateTime(int width, int length, boolean  isTrimming)
     {
-        return 0;
+        double thirtyMins = (double) 30 / 60;
+        double fourtyFiveMins = (double) 45 / 60;
+        double totalSquareFeet = (double) (width * length) / 1000;
+        double hoursPerJob = 0.0;
+
+        if (isTrimming) {
+            hoursPerJob = totalSquareFeet * fourtyFiveMins;
+        } else {
+            hoursPerJob = totalSquareFeet * thirtyMins;
+        }
+        return hoursPerJob;
     }
 
     /*
