@@ -5,3 +5,10 @@ USE northwind;
 -- Marketing Manager of the company
 -- Expected: 12 rows
 
+SELECT company_name
+	, contact_name
+    , contact_title
+    , phone
+FROM customers
+WHERE contact_title = 'Marketing Manager'
+

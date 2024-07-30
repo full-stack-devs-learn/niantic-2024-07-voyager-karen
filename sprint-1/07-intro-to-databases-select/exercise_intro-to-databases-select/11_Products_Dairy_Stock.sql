@@ -9,3 +9,9 @@ USE northwind;
 
 -- Expected: 10 rows
 
+SELECT product_name
+	, unit_price
+    , units_in_stock
+FROM products_by_category
+WHERE category_name = 'Dairy Products';
+
