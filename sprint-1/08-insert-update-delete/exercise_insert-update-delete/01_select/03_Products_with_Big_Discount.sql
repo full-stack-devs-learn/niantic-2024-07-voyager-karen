@@ -10,6 +10,28 @@ USE northwind;
 
 -- sort the rows by discount highest to lowest
 
-
 -- Expected: 8 Rows
+
+SELECT company_name
+	, order_date
+    , order_id
+    , product_name
+    , sales_price
+    , quantity
+    , discount
+    , (sales_price * quantity) AS subtotal
+    , ((sales_price * quantity) * discount) AS line_discount
+    , ((sales_price * quantity) - ((sales_price * quantity) * discount)) AS line_total
+FROM customer_orders
+WHERE ((sales_price * quantity) * discount) > 1000
+ORDER BY discount DESC;
+
+
+-- subtotal = sales_price * quantity
+-- linediscount = subtotal * discount 
+-- linetotal = subtotal - lined discount 
+
+
+
+
 
