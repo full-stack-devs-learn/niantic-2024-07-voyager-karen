@@ -45,3 +45,87 @@ OrderDetails: (Create 5 line items)
     Discount: 0
 */
 
+SET @customer_id = '12345';
+SET @company_name = 'SQL HURTS ME INC.';
+SET @contact_name = 'Sea Quil';
+SET @address = '911 SQL Road';
+SET @city = 'I MISS JAVA';
+SET @region = 'CA';
+SET @postal_code = '01010';
+SET @country = 'SEA';
+
+SET @product1 = 'Gustaf''s Knckebrd';
+SET @product2 = 'Tofu';
+SET @product3 = 'Konbu';
+SET @product4 = 'Teatime Chocolate Biscuits';
+SET @product5 = 'Ikura';
+
+-- 1. INSERT new customer INTO customers table
+
+INSERT INTO customers
+(
+	customer_id
+    , company_name
+    , contact_name
+    , address
+    , city
+    , region
+    , postal_code
+    , country
+)
+VALUES
+(
+	@customer_id
+    , @company_name
+    , @contact_name
+    , @address
+    , @city
+    , @region
+    , @postal_code
+    , @country
+);
+
+
+-- 2. INSERT new order INTO order tables
+
+INSERT INTO orders
+(
+	customer_id
+    , order_date
+    , ship_name
+    , ship_address
+    , ship_city
+    , ship_region
+    , ship_postal_code
+    , ship_country
+)
+VALUES
+(
+	@customer_id
+    , CURRENT_DATE
+	, @contact_name
+    , @address
+    , @city
+    , @region
+    , @postal_code
+    , @country
+);
+
+SET @order_id = LAST_INSERT_ID();
+
+-- 3. INSERT 1 row for each product into the order_details table
+
+SELECT @product_id_1 := product_id
+	, @product_price_1 := unit_price
+FROM products
+WHERE product_name = @product_name_1;
+
+INSERT INTO order_details(order_id, product_id, unit_price)
+VALUES (@order_id, @product_id_1, @product_price_1);
+
+
+
+
+
+
+
