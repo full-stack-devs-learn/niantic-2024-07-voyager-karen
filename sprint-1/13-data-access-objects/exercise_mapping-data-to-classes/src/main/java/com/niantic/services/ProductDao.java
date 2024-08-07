@@ -30,7 +30,32 @@ public class ProductDao
      */
     public ArrayList<Product> getProductsByCategory(int categoryId)
     {
-        return null;
+
+        var productByCategory = new ArrayList<Product>();
+
+        String sql = """
+                SELECT category_id
+                , product_name
+                FROM products
+                WHERE category_id = ?;
+                """;
+
+        var row = jdbcTemplate.queryForRowSet(sql, categoryId);
+
+        while(row.next())
+        {
+            int categoryID = row.getInt("category_id");
+            String productName = row.getString("product_name");
+
+            var productsByCategory = new Product();
+            productsByCategory.setCategoryId(categoryID);
+            productsByCategory.setProductName(productName);
+
+            productByCategory.add(productsByCategory);
+
+        }
+
+        return productByCategory;
     }
 
     /*
