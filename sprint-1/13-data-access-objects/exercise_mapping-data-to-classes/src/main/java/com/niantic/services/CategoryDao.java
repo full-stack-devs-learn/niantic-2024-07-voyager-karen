@@ -65,6 +65,25 @@ public class CategoryDao
      */
     public Category getCategoryById(int categoryId)
     {
+        String sql = """
+                SELECT category_id
+                    , category_name
+                    , description
+                FROM categories
+                WHERE category_id = ?;
+                """;
+
+        var row = jdbcTemplate.queryForRowSet(sql, categoryId);
+
+        if(row.next()) {
+            int categoryID = row.getInt("category_id");
+            String categoryName = row.getString("category_name");
+            String description = row.getString("description");
+
+            return new Category(categoryID, categoryName, description);
+
+        }
+
         return null;
     }
 
@@ -75,6 +94,11 @@ public class CategoryDao
      */
     public void addCategory(Category category)
     {
+        String sql = "INSERT INTO category (category_name, description) VALUES (?,?);";
+
+        jdbcTemplate.update(sql,
+                category.getCategoryName(),
+                category.getDescription());
     }
 
     /*
@@ -84,6 +108,17 @@ public class CategoryDao
      */
     public void updateCategory(Category category)
     {
+        String sql = """
+                UPDATE category
+                SET category_name = ?
+                    , description = ?
+                WHERE category_id = ?;    
+                """;
+
+        jdbcTemplate.update(sql, category.getCategoryName(),
+                category.getDescription(),
+                category.getCategoryId());
+
     }
 
     /*
@@ -92,6 +127,9 @@ public class CategoryDao
      */
     public void deleteCategory(int categoryId)
     {
+        String sql = "DELETE FROM category WHERE category_id = ?;";
+
+        jdbcTemplate.update(sql, categoryId);
     }
 
 
