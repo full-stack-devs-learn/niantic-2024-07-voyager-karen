@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Figtree', sans-serif;
+}
+
+body {
+    background-color: #fff;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
+    z-index: 1050;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-link, .btn {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.nav-link {
+    background: none;
+    color: black;
+}
+
+.user-icon {
+    height: 29px;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.btn:hover {
+    background-color: #ffffff;
+    color: black;
+}
+
+.container {
+    position: relative;
+    max-width: 1500px;
+    margin: auto;
+    padding: 40px;
+    padding-top: 100px;
+}
+
+.featured-product {
+    position: relative;
+}
+
+.featured-product, .image-pair, .full-page-image {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.display-heat-up {
+    font-size: 36px;
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 42%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    color: black;
+    text-align: left;
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .overlay-text {
+        font-size: 16px;
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .overlay-text {
+        font-size: 14px;
+        width: 95%;
+    }
+}
+
+.featured-product img {
+    width: 100%;
+    height: auto;
+}
+
+.image-pair {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.image-text-container {
+    width: 49%;
+}
+
+.image-text-container img {
+    width: 100%;
+    height: auto;
+}
+
+.content-description {
+    padding: 10px;
+    background-color: #ffffff;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.order-now-btn, .join-now-btn {
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.order-now-btn:hover, .join-now-btn:hover {
+    background-color: #000000;
+}
+
+.full-page-image img {
+    width: 100%;
+    height: auto;
+}
