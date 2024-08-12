@@ -11,6 +11,8 @@ body {
     background-color: #fff;
 }
 
+/* navigation bar styling */
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -35,14 +37,19 @@ body {
 }
 
 .nav-link, .btn {
-    background-color: #444;
+    background-color: #000000;
     color: white;
     border: none;
-    padding: 10px 20px;
+    font-size: 14px;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    padding-bottom: .25rem !important;
+    padding-top: .25rem !important;
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 2px;
+
 }
 
 .nav-link {
@@ -51,7 +58,7 @@ body {
 }
 
 .user-icon {
-    height: 29px;
+    height: 50px;
     vertical-align: middle;
     margin-left: 5px;
 }
@@ -59,7 +66,10 @@ body {
 .btn:hover {
     background-color: #ffffff;
     color: black;
+    border: 2px solid black;
 }
+
+/* main content styling - Section 1: Featured product, Section 2: Image pairing */
 
 .container {
     position: relative;
@@ -134,21 +144,107 @@ body {
     text-align: left;
 }
 
-.order-now-btn, .join-now-btn {
+.order-now-btn, .join-now-btn, .learn-more-btn {
     padding: 10px 20px;
     background-color: #000000;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
-.order-now-btn:hover, .join-now-btn:hover {
-    background-color: #000000;
+.order-now-btn:hover, .join-now-btn:hover, .learn-more-btn:hover {
+    background-color: #ffffff;
+    color: black;
+    border: 2px solid black;
 }
+
+/* end of main content */
 
 .full-page-image img {
     width: 100%;
     height: auto;
 }
+
+/* fundraising section */
+
+.fundraising-section {
+    text-align: center; 
+    padding: 20px; 
+    margin-top: 30px;
+    background-color: rgb(234, 234, 234);
+}  
+
+.fundraising-background img {
+    width: 75%; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+}
+
+
+.fundraising-content h2 {
+    font-size: 17px;
+    margin: 5px 0; 
+    margin-top: 10px;
+}
+
+/* section separator */
+
+.separator-image {
+    width: 100%; 
+    height: auto; 
+    display: block; 
+}
+
+/* footer styling */
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.footer-logo img {
+    height: 100px; 
+    padding-left: 25px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    width: 100%;
+}
+
+.footer-group {
+    margin: 10px 0; 
+    text-align: center;
+    width: 100%;  
+    padding-right: 280px;
+}
+
+.footer-group a {
+    display: inline-block;  
+    margin-right: 20px; 
+    color: #000;
+    text-decoration: none;
+}
+
+.footer-group a:hover {
+    text-decoration: underline;
+}
+
+/* footer bottom styling */
+
+.footer-bottom {
+    background-color: #3a2e2e; 
+    color: white; 
+    text-align: center; 
+    padding: 10px 0; 
+    font-size: 14px; 
+}
+

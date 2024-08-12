@@ -1,0 +1,271 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Figtree', sans-serif;
+}
+
+body {
+    background-color: #fff;
+}
+
+
+/* Navigation Bar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 10px 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
+    z-index: 1050;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.nav-link, .btn {
+    background-color: white;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+
+.user-icon {
+    height: 50px;  
+    vertical-align: middle;
+    margin-right: 0;  
+    cursor: pointer;
+}
+
+.cart-icon {
+    height: 50px;  
+    vertical-align: middle;
+    margin-left: -40px;  
+    margin-top: 3px;
+}
+
+.nav-link {
+    display: inline-block;
+    align-items: center;
+    padding: 5px 10px;  
+    text-decoration: none;  
+    color: black;  
+    cursor: pointer;
+}
+
+/* Sign-up Container, Promo, Connect with Social Media */
+
+.signup-container {
+    position: relative;
+    max-width: 500px;
+    margin: auto;
+    padding: 40px;
+    padding-top: 150px;
+}
+
+
+.promo-section h1 {
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+.promo-section p {
+    color: #555;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.account-section {
+    text-align: center;
+}
+
+.social-button {
+    width: 100%;
+    padding: .85rem .75rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+}
+
+.facebook {
+    background-color: #3B5998;
+}
+
+.apple {
+    background-color: #000;
+}
+
+.divider {
+    margin: 20px 0;
+    color: #ccc;
+}
+
+/* Sign-up User Input Styling */
+
+.signup-form input {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 10px;
+    border: 3px solid #ddd;
+    font-size: 1rem;
+    font-weight: 400;
+    background-clip: padding-box;
+}
+
+.signup-form button {
+    width: 100%;
+    padding: 5px;
+    color: black;
+    border: none;
+    background: white;
+
+}
+
+/* Favorite Restaurant with Location Icon */
+
+.favorite-restaurant h3 {
+    font-size: 18px; 
+    margin-bottom: 0; 
+    text-align: left;
+}
+
+.favorite-restaurant p {
+    text-align: left; 
+    margin-top: 3px;
+    font-size: 14px;
+}
+
+.location-button {
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.location-button img {
+    margin-right: 10px;
+}
+
+/* Checkbox Styling */
+
+.checkbox-group label {
+    display: block;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+
+/* Register Button or Log In Link */
+.register-btn {
+    width: 100%;
+    padding: 20px;
+    background-color: #7b817b;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 20px; 
+}
+
+.captcha-container {
+    display: flex;
+    justify-content: center; 
+    margin-top: 20px; 
+}
+
+.captcha-image {
+    max-width: 100%; 
+    height: auto; 
+}
+
+/* End of Sign-up Container */
+
+.separator-image {
+    width: 100%; 
+    height: auto; 
+    display: block; 
+}
+
+/* Footer Styling */
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.footer-logo img {
+    height: 100px; 
+    padding-left: 25px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    width: 100%;
+}
+
+.footer-group {
+    margin: 10px 0; 
+    text-align: center;
+    width: 100%;  
+    padding-right: 280px;
+}
+
+.footer-group a {
+    display: inline-block;  
+    margin-right: 20px; 
+    color: #000;
+    text-decoration: none;
+}
+
+.footer-group a:hover {
+    text-decoration: underline;
+}
+
+
+/* Footer Bottom Styling */
+.footer-bottom {
+    background-color: #3a2e2e; 
+    color: white; 
+    text-align: center; 
+    padding: 10px 0; 
+    font-size: 14px; 
+}
