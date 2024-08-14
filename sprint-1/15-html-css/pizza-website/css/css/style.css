@@ -11,6 +11,20 @@ body {
     background-color: #fff;
 }
 
+@media (max-width: 768px) {
+    .overlay-text {
+        font-size: 16px;
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .overlay-text {
+        font-size: 14px;
+        width: 95%;
+    }
+}
+
 /* navigation bar styling */
 
 .navbar {
@@ -101,20 +115,6 @@ body {
     color: black;
     text-align: left;
     padding: 20px;
-}
-
-@media (max-width: 768px) {
-    .overlay-text {
-        font-size: 16px;
-        width: 90%;
-    }
-}
-
-@media (max-width: 480px) {
-    .overlay-text {
-        font-size: 14px;
-        width: 95%;
-    }
 }
 
 .featured-product img {

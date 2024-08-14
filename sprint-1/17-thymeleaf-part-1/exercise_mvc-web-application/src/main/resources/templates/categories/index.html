@@ -16,18 +16,21 @@
 <h4>Categories</h4>
 
     <a th:href="@{/categories/new}">New</a>
+
 <table class="table table-striped">
     <thead>
     <tr>
-        <th>Id</th>
-        <th>Category</th>
+        <th>Category ID</th>
+        <th>Category Name</th>
+        <th>Description</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>1</td>
-        <td>First Category</td>
-    </tr>
+        <tr th:each="category:${categories}">
+            <td th:text="${category.categoryId}"></td>
+            <td th:text="${category.categoryName}"></td>
+            <td th:text="${category.description}"></td>
+        </tr>
     </tbody>
 </table>
 </main>
