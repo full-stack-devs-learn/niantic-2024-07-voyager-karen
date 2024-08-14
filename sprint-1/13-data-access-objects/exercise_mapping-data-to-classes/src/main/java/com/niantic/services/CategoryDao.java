@@ -94,7 +94,7 @@ public class CategoryDao
      */
     public void addCategory(Category category)
     {
-        String sql = "INSERT INTO category (category_name, description) VALUES (?,?);";
+        String sql = "INSERT INTO categories (category_name, description) VALUES (?,?);";
 
         jdbcTemplate.update(sql,
                 category.getCategoryName(),
@@ -109,7 +109,7 @@ public class CategoryDao
     public void updateCategory(Category category)
     {
         String sql = """
-                UPDATE category
+                UPDATE categories
                 SET category_name = ?
                     , description = ?
                 WHERE category_id = ?;    
@@ -127,7 +127,7 @@ public class CategoryDao
      */
     public void deleteCategory(int categoryId)
     {
-        String sql = "DELETE FROM category WHERE category_id = ?;";
+        String sql = "DELETE FROM categories WHERE category_id = ?;";
 
         jdbcTemplate.update(sql, categoryId);
     }
