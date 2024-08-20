@@ -7,7 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class WizardTest extends ReflectionBase<Wizard>
+public class WizardTest extends ReflectionBase<Wizard>
 {
     Class<Wizard> klass;
 
