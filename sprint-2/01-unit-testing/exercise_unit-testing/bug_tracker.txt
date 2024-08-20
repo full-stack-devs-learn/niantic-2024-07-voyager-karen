@@ -4,33 +4,33 @@ Class: Rectangle
 
     Bug 1:
 
-        Describe the bug/error:
+        Describe the bug/error: The calculation for the function getPerimiter() is incorrect.
 
-        Where was the bug? (function, line number)
+        Where was the bug? (function, line number) public int getPerimeter(), line 57
 
-        What test helped you find the bug?
+        What test helped you find the bug? public void calculateRectangle_shouldReturn_areaAndPerimeter()
 
-        What did you do to fix the bug?
+        What did you do to fix the bug? Changed to correct formula to calculate the perimeter of a rectangle P = (w + h) * 2
 
     Bug 2:
 
-        Describe the bug/error:
+        Describe the bug/error: No conditional statement to check if the values of getArea is 0
 
-        Where was the bug? (function, line number)
+        Where was the bug? (function, line number) public int getArea(), line 42
 
-        What test helped you find the bug?
+        What test helped you find the bug? public void valuesAreZero_shouldReturn_Zero()
 
-        What did you do to fix the bug?
+        What did you do to fix the bug? Added conditional statement to getArea() function to check if values were 0
 
     Bug 3:
 
-        Describe the bug/error:
+        Describe the bug/error: 
 
-        Where was the bug? (function, line number)
+        Where was the bug? (function, line number) 
 
         What test helped you find the bug?
 
-        What did you do to fix the bug?
+        What did you do to fix the bug? 
 
 
 
@@ -39,23 +39,23 @@ Class: Quiz
 
     Bug 1:
 
-        Describe the bug/error:
+        Describe the bug/error: Missing conditional statement to make sure score and possiblePoints is not a negative number
 
-        Where was the bug? (function, line number)
+        Where was the bug? (function, line number) public int getPercent(), line 45
 
-        What test helped you find the bug?
+        What test helped you find the bug? public void negativeValue_shouldReturn_zero()
 
-        What did you do to fix the bug?
+        What did you do to fix the bug? Created conditional statement to check if the value of points and score is a negative number
 
     Bug 2:
 
-        Describe the bug/error:
+        Describe the bug/error: Wrong calculation for getPercent() and data types 
 
-        Where was the bug? (function, line number)
+        Where was the bug? (function, line number) public int getPercent(), line 48
 
-        What test helped you find the bug?
+        What test helped you find the bug? public void divide_shouldReturn_theQuotientOfNums()
 
-        What did you do to fix the bug?
+        What did you do to fix the bug? Change to correct calculation and data types added double data type and parentheses for correct calculation
 
 
 *** Optional / Challenge ***

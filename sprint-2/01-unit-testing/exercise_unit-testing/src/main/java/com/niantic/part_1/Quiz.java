@@ -3,39 +3,51 @@ package com.niantic.part_1;
 public class Quiz
 {
     private int score;
-    private final int possiblePoints;
-    private final String studentName;
+    private int possiblePoints;
+    private String studentName;
 
-    public int getScore()
-    {
+    public int getScore() {
         return score;
     }
 
-    public void setScore(int score)
-    {
+    public void setScore(int score) {
         this.score = score;
     }
 
-    public int getPossiblePoints()
-    {
+    public int getPossiblePoints() {
         return possiblePoints;
     }
 
-    public String getStudentName()
-    {
+    public void setPossiblePoints(int possiblePoints) {
+        this.possiblePoints = possiblePoints;
+    }
+
+    public String getStudentName() {
         return studentName;
     }
 
-    public Quiz(int possiblePoints, String studentName)
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public Quiz(int score, int possiblePoints, String studentName)
     {
+        this.score = score;
         this.possiblePoints = possiblePoints;
         this.studentName = studentName;
     }
 
-    public int getPercent()
-    {
-        return score / possiblePoints * 100;
+    public Quiz() {
+
     }
+
+    public int getPercent() {
+        if (possiblePoints < 0 || score < 0) {
+            return 0;
+        }
+        return (int) ((double) score / possiblePoints * 100);
+    }
+
 
     public String getLetterGrade()
     {
