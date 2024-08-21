@@ -18,7 +18,13 @@ public class Maps
      */
     public List<String> mapCompanyNames(List<LineItem> lineItems)
     {
-        return new ArrayList<>();
+        var companyNames = lineItems.stream()
+                .map(lineItem -> lineItem.getCompanyName())
+                .distinct()
+                .sorted()
+                .toList();
+
+        return companyNames;
     }
 
     /*
@@ -31,7 +37,13 @@ public class Maps
      */
     public List<String> mapCategories(List<LineItem> lineItems)
     {
-        return new ArrayList<>();
+        var itemsToCategoryName = lineItems.stream()
+                .map(lineItem -> lineItem.getCategoryName())
+                .distinct()
+                .sorted()
+                .toList();
+
+        return itemsToCategoryName;
     }
 
     /*
@@ -44,7 +56,13 @@ public class Maps
      */
     public List<String> mapProducts(List<LineItem> lineItems)
     {
-        return new ArrayList<>();
+        var itemsToProductName = lineItems.stream()
+                .map(lineItem -> lineItem.getProductName())
+                .distinct()
+                .sorted()
+                .toList();
+
+        return itemsToProductName;
     }
 
     /*
@@ -57,7 +75,15 @@ public class Maps
      */
     public List<String> mapYears(List<LineItem> lineItems)
     {
-        return new ArrayList<>();
+
+        var itemsToOrderYear = lineItems.stream()
+                .map(lineItem -> Integer.toString(lineItem.getOrderDate().getYear()))
+                .distinct()
+                .sorted()
+                .toList();
+
+        return itemsToOrderYear;
+
     }
 
     /*
@@ -70,6 +96,14 @@ public class Maps
      */
     public List<String> mapOrderIds(List<LineItem> lineItems)
     {
-        return new ArrayList<>();
+
+        var itemsToOrderId = lineItems.stream()
+                .map(lineItem -> Integer.toString(lineItem.getOrderId()))
+                .distinct()
+                .sorted()
+                .toList();
+
+        return itemsToOrderId;
+
     }
 }
