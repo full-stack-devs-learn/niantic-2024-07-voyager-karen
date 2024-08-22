@@ -57,6 +57,26 @@ Class: Quiz
 
         What did you do to fix the bug? Change to correct calculation and data types added double data type and parentheses for correct calculation
 
+    Bug 3:
+
+        Describe the bug/error: Percent range for the letter grade calculation is incorrect
+
+        Where was the bug? (function, line number) public String getLetterGrade(), line 56
+
+        What test helped you find the bug? public void percentNum_shouldReturn_letterGrade()
+
+        What did you do to fix the bug? Change to correct calculation for each letter grade 
+
+    Bug 4:
+
+        Describe the bug/error: Percent range for letter grade "D" started at 50 rather than 60
+
+        Where was the bug? (function, line number) public String getLetterGrade(), line 59
+
+        What test helped you find the bug? public void percentNum_shouldReturn_letterGrade()
+
+        What did you do to fix the bug? Change to correct calculation for letter grade "D" to 60
+
 
 *** Optional / Challenge ***
 
