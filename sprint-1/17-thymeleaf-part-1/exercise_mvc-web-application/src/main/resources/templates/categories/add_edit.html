@@ -14,6 +14,8 @@
 <div th:replace="fragments/header.html :: nav"></div>
 
 <main class="container mt-4">
+    <a href="/categories" class="btn btn-secondary mb-4">Back</a>
+
     <h1 th:if="${action} =='add'">Add Category</h1>
     <h1 th:if="${action} =='edit'">Edit Category</h1>
 
@@ -26,7 +28,7 @@
             <input class="form-control" type="text" th:field="*{description}">
             <label th:for="*{description}">Description</label>
         </div>
-        <input class="btn btn-outline-danger" type="submit" value="Save">
+        <input class="btn btn-outline-success" type="submit" value="Save">
     </form>
 
 </main>
