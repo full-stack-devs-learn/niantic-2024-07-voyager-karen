@@ -1,3 +1,5 @@
+USE northwind;
+
 -- 14. Top 5 ORDER totals: to get the order total you have to 
 -- sum the LineTotal or each line item in the order
 -- include the order_id and order_total
@@ -14,6 +16,12 @@
 
 -- (5 rows)
 
+SELECT company_name, order_id, country, SUM(sales_price * quantity) AS total_sales
+FROM customer_orders
+WHERE country IN ('Germany', 'Brazil', 'Austria', 'Denmark', 'USA')
+GROUP BY company_name, order_id, country
+ORDER BY total_sales DESC
+LIMIT 5;
 
 
 

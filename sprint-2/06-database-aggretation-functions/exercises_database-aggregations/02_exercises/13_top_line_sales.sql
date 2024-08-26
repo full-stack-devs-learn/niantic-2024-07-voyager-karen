@@ -1,3 +1,5 @@
+USE northwind;
+
 -- 13. Top 5 line item sales:
 -- include the company name, order id, country and total sale amount
 -- (Use the customer_orders View)
@@ -10,8 +12,16 @@
 -- Rattlesnake Canyon Grocery,  10889,  USA,        10540.00
 
 
--- (1 row)
+-- (5 row)
 
+SELECT company_name
+	, order_id
+    , country
+    ,(sales_price * quantity) AS total_sales
+FROM customer_orders
+WHERE country IN ('Germany', 'Brazil', 'Austria', 'Denmark', 'USA')
+ORDER BY total_sales DESC
+LIMIT 5;
 
 
 
