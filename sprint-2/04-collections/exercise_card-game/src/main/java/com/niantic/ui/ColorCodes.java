@@ -30,6 +30,24 @@ public final class ColorCodes
     public static final String UNDERLINE_HEAVY = "\u001B[21m";
     public static final String OUTLINE = "\u001B[51m";
 
+    public static String getElementColor(String element) {
+        switch (element) {
+            case "Fire":
+                return RED;
+            case "Water":
+                return CYAN;
+            case "Earth":
+                return GREEN;
+            case "Air":
+                return GRAY;
+            case "Lightning":
+                return YELLOW;
+            default:
+                return RESET; // Default to no color if the element is unknown
+        }
+    }
+
+
     private ColorCodes(){}
     
 }
