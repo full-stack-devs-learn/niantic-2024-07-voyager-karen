@@ -1,3 +1,5 @@
+USE northwind;
+
 -- 21. Create a query that displays the top 3 most popular categories,
 -- include:
     -- the total number of products that were purchased in that category (sum quantity),
@@ -14,6 +16,13 @@
 
 -- (3 rows)
 
+SELECT category_name AS ParentCategory
+	, SUM(quantity) AS QuantityPurchased
+    , COUNT(DISTINCT order_id) AS OrderPlaced
+FROM customer_orders
+GROUP BY category_name
+ORDER BY QuantityPurchased DESC
+LIMIT 3;
 
 
 

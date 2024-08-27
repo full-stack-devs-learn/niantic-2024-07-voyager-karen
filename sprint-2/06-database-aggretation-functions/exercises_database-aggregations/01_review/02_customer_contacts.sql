@@ -1,3 +1,5 @@
+USE northwind;
+
 -- 2. Return the Company Name, Contact Name, Contact Title and city_state_zip
 -- for each customer outside the United States
 -- (Use the customers table)
@@ -9,6 +11,20 @@
 -- the city_state_zip column should not display any NULL
 
 -- (78 Rows)
+
+SELECT 
+    company_name,
+    contact_name,
+    contact_title,
+    CONCAT_WS(', ', city, region, postal_code) AS city_state_zip
+FROM 
+    customers
+WHERE 
+    country <> 'USA'
+    AND city IS NOT NULL
+    AND postal_code IS NOT NULL
+ORDER BY 
+    city_state_zip ASC;
 
 
 
