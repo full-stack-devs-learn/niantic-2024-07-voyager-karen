@@ -9,7 +9,22 @@
 
 -- (9 rows)
 
+
+-- looks like I added myself so 10 rows returned -- 
+
 USE northwind;
+
+SELECT 
+    CONCAT(e.first_name, ' ', e.last_name) AS EmployeeName,
+    CONCAT(m.first_name, ' ', m.last_name) AS ManagerName
+FROM 
+    Employees e
+LEFT JOIN 
+    Employees m 
+    ON e.reports_to = m.employee_id
+ORDER BY 
+    EmployeeName;
+
 
 
 
