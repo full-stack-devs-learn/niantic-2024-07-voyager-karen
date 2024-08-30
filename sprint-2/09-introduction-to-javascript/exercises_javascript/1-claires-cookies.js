@@ -16,7 +16,8 @@
 
 function calculateOrderSubtotal(quantity)
 {
-	return 0;
+	const cookieCost = 12.95; 
+	return quantity * cookieCost
 }
 
 
@@ -40,9 +41,12 @@ function calculateOrderSubtotal(quantity)
 
 function calculateTax(quantity)
 {
-	return 0;
-}
+	const taxRate = 0.0575;
+	const subTotal = calculateOrderSubtotal(quantity);
+	const taxAmount = subTotal * taxRate;
+	return Math.round(taxAmount * 100) / 100; // round tax to 2 decimal places
 
+}
 
 
 /*
@@ -64,6 +68,16 @@ function calculateTax(quantity)
 */
 
 // create your function here
+
+function calculateOrderTotal(quantity) 
+{
+
+	const subTotal = calculateOrderSubtotal(quantity);
+	const tax = calculateTax(quantity);
+	const total = subTotal + tax;
+	return Math.round(total * 100) / 100
+
+}
 
 
 /*
@@ -107,6 +121,25 @@ function calculateTax(quantity)
 
 // create your function here
 
+function placeOrder(customer, quantity) {
+
+	const subTotal = calculateOrderSubtotal(quantity);
+	const tax = calculateTax(quantity);
+	const total = calculateOrderTotal(quantity);
+
+	return {
+
+			customer: customer,
+			quantity: quantity,
+			subtotal: subTotal,
+			tax: tax,
+			total: total
+	};
+
+};
+
+
+
 
 /*
 5.	Sean's classes have all earned a cookie party. 
@@ -128,3 +161,23 @@ function calculateTax(quantity)
 */
 
 // create your function here
+
+function calculateCookiesNeeded(num1, num2, num3) {
+
+	const cookiesPerAStudent = 4;
+	const cookiesPerBStudent = 3;
+	const cookiesPerOtherStudent = 2;
+
+    // Calculate the total number of cookies needed
+    const totalCookies = (num1 * cookiesPerAStudent) + 
+                         (num2 * cookiesPerBStudent) + 
+                         (num3 * cookiesPerOtherStudent);
+
+
+	const dozens = Math.ceil(totalCookies / 12); // math.ceil(x) rounds up to the nearest integer
+	
+	return dozens;
+
+}
+
+// add cookies up and divide by 12 

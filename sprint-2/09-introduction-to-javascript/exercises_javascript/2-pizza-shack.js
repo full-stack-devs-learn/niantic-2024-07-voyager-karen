@@ -13,7 +13,23 @@
 
 */
 
+function getToppings(pizzaType) {
 
+	const casePizzaType = pizzaType.toLowerCase();
+
+	const pizzaToppings = {
+
+			"hawaiian": ['Ham','Pineapple', 'Mushroom'],
+			"cowboy": ["Pepperoni", "Sausage", "Beef"],
+			"supreme": ["Pepperoni", "Sausage", "Pepper", "Onion", "Black Olives"],
+			"vegetarian": ["Spinach", "Zucchini", "Mushroom", "Artichoke", "Tomato", "Onion"],
+			"cheese": ["Cheese"]
+					
+	};
+
+	return pizzaToppings[casePizzaType] || [];
+
+}
 
 
 /*
@@ -29,6 +45,25 @@
 							}
 
 */
+
+function makePizza(pizzaType) {
+    const normalizedPizzaType = pizzaType.toLowerCase();
+    const validPizzas = ["hawaiian", "cowboy", "supreme", "vegetarian", "cheese"];
+    
+  
+    if (!validPizzas.includes(normalizedPizzaType)) {
+        return {};  
+    }
+
+    const toppings = getToppings(pizzaType);  
+
+
+    return {
+        name: pizzaType,
+        toppings: toppings
+    };
+}
+
 
 
 
@@ -63,6 +98,18 @@
 	makeCustom() => {}
 
 */
+
+function makeCustom(...toppings) {
+
+	if (toppings.length === 0) {
+		return {};
+	}
+
+	return {
+		name: "Custom",
+		toppings: toppings  
+	};
+}
 
 
 
@@ -114,3 +161,22 @@
 
 */
 
+// rest parameter that allows a function to accept an indefinite number of arguments as an array
+function createOrder(customer, hawaiian, cowboy, supreme, vegetarian, cheese) {
+    const pizzas = [];
+
+    if (hawaiian) pizzas.push(makePizza("Hawaiian"));
+    if (cowboy) pizzas.push(makePizza("Cowboy"));
+    if (supreme) pizzas.push(makePizza("Supreme"));
+    if (vegetarian) pizzas.push(makePizza("Vegetarian"));
+    if (cheese) pizzas.push(makePizza("Cheese"));
+
+	if (pizzas.length === 0) {
+        return {};
+    }
+
+    return {
+        customer: customer,
+        pizzas: pizzas
+    };
+}
