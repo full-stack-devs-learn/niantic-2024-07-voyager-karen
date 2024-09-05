@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class ProductsController
@@ -20,15 +22,28 @@ public class ProductsController
     @GetMapping( "/products")
     public String products(Model model, @RequestParam(defaultValue = "1") int catId)
     {
-        var products = productDao.getProductsByCategory(catId);
+
         var category = categoryDao.getCategoryById(catId);
         var categories = categoryDao.getCategories();
 
         model.addAttribute("categories", categories);
         model.addAttribute("currentCategory", category);
-        model.addAttribute("products", products);
+
         return "products/index";
     }
+//
+
+    @GetMapping("/products/category/{catId}")
+    public String productsByCategory(Model model, @PathVariable int catId) {
+        // Load only categories initially (no products)
+        var products = productDao.getProductsByCategory(catId);
+
+        model.addAttribute("products", products);
+
+        // No products or current category loaded by default
+        return "fragments/product_rows";
+    }
+
 
     // details page
     @GetMapping("/products/{id}")

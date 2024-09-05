@@ -1,0 +1,10 @@
+<!-- fragments/product_rows.html -->
+<tr th:each="product : ${products}">
+    <td th:text="${product.productId}"></td>
+    <td><a th:href="@{/products/{id}(id=${product.productId})}" th:text="${product.productName}"></a></td>
+    <td th:text="${#numbers.formatCurrency(product.unitPrice)}"></td>
+    <td>
+        <a th:href="@{/products/{id}/edit(id=${product.productId})}" class="btn btn-success">Edit</a>
+        <a th:href="@{/products/{id}/delete(id=${product.productId})}" class="btn btn-danger">Delete</a>
+    </td>
+</tr>
