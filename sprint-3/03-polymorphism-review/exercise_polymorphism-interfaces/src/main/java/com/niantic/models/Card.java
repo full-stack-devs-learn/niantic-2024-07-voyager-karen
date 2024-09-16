@@ -41,28 +41,48 @@ public class Card implements Comparable<Card>
         }
     }
 
-    // lookup map
+    // Lookup map for card face values
     private static final Map<String, Integer> cardValues = new HashMap<>()
     {{
-        put("A", 11);
-        put("K", 10);
-        put("Q", 10);
-        put("J", 10);
-        put("10", 10);
-        put("9", 9);
-        put("8", 8);
-        put("7", 7);
-        put("6", 6);
-        put("5", 5);
-        put("4", 4);
-        put("3", 3);
         put("2", 2);
+        put("3", 3);
+        put("4", 4);
+        put("5", 5);
+        put("6", 6);
+        put("7", 7);
+        put("8", 8);
+        put("9", 9);
+        put("10", 10);
+        put("J", 11);
+        put("Q", 12);
+        put("K", 13);
+        put("A", 14);
+    }};
+
+
+    private static final Map<String, Integer> suitOrder = new HashMap<>()
+    {{
+        put("spades", 1);
+        put("hearts", 2);
+        put("diamonds", 3);
+        put("clubs", 4);
     }};
 
     @Override
-    public int compareTo(Card o)
-    {
-        // todo: Exercise 1: implement Comparable<Card>
-        return 0;
+    public int compareTo(Card other) {
+
+        int thisSuitPriority = suitOrder.get(this.suit.toLowerCase());
+        int otherSuitPriority = suitOrder.get(other.suit.toLowerCase());
+
+        if (thisSuitPriority != otherSuitPriority) {
+            return Integer.compare(thisSuitPriority, otherSuitPriority);
+        }
+
+
+        int thisFaceValuePriority = cardValues.get(this.faceValue);
+        int otherFaceValuePriority = cardValues.get(other.faceValue);
+
+        return Integer.compare(thisFaceValuePriority, otherFaceValuePriority);
     }
+
 }
