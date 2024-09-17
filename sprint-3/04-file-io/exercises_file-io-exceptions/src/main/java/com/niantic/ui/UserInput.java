@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class UserInput
 {
-    protected static Scanner in = new Scanner(System.in);
+    protected static Scanner scanner = new Scanner(System.in);
 
     public static int homeScreenSelection()
     {
@@ -17,6 +17,7 @@ public class UserInput
         System.out.println("  ------------ Individual File ------------");
         System.out.println("  2) Student: display all scores");
         System.out.println("  3) Student: display average score");
+        System.out.println("  4) Create Student Summary Report");
         System.out.println();
         System.out.println("  ---------- Challenge All Files ----------");
         System.out.println("  5) All Students: display average score");
@@ -27,7 +28,7 @@ public class UserInput
         System.out.println();
         System.out.print("Please make a selection: ");
 
-        return Integer.parseInt(in.nextLine());
+        return Integer.parseInt(scanner.nextLine());
     }
 
     public static void displayMessage(String message)
@@ -35,4 +36,16 @@ public class UserInput
         System.out.println();
         System.out.println(message);
     }
+
+    public String getStringInput(String message)
+    {
+        System.out.print(message);
+        return scanner.nextLine();
+    }
+
+    public int getIntInput(String message)
+    {
+        return Integer.parseInt(getStringInput(message));
+    }
+
 }

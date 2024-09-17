@@ -1,17 +1,24 @@
 package com.niantic.application;
 
 import com.niantic.models.Assignment;
+import com.niantic.models.StudentStatistics;
 import com.niantic.services.GradesFileService;
 import com.niantic.services.GradesService;
 import com.niantic.ui.UserInput;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class GradingApplication implements Runnable
 {
     private GradesService gradesService = new GradesFileService();
+    private final UserInput ui = new UserInput();
 
     public void run()
     {
@@ -30,9 +37,12 @@ public class GradingApplication implements Runnable
                     displayStudentAverages();
                     break;
                 case 4:
-                    displayAllStudentStatistics();
+                    createStudentSummaryReport();
                     break;
                 case 5:
+                    displayAllStudentStatistics();
+                    break;
+                case 6:
                     displayAssignmentStatistics();
                     break;
                 case 0:
@@ -44,138 +54,100 @@ public class GradingApplication implements Runnable
         }
     }
 
-    private void displayAllFiles()
-    {
-        File files = new File("files/");
+    private String displayAllFiles() {
+        String[] fileNames = gradesService.getFileNames();
 
-        if(files.isDirectory()) {
-            String[] fileNames = files.list();
-            if(fileNames != null) {
-                System.out.println("Student File Names:");
-                for(String fileName : fileNames) {
-                    System.out.println(fileName);
-                }
-            }
+        if (fileNames == null || fileNames.length == 0) {
+            System.out.println("No files found.");
+            return null;
+        }
+
+        System.out.println("Select a file:");
+
+        for (int i = 0; i < fileNames.length; i++) {
+            System.out.println((i + 1) + ". " + fileNames[i]);
+        }
+
+        int fileChoice = ui.getIntInput("Enter the number of the file: ") - 1;
+
+        if (fileChoice >= 0 && fileChoice < fileNames.length) {
+            return fileNames[fileChoice];
+        } else {
+            System.out.println("Invalid choice.");
+            return null;
         }
     }
 
 
-    private void displayFileScores()
-    {
+    private void displayFileScores() {
+        String selectedFile = displayAllFiles();
 
-        File files = new File("files/");
-        Scanner input = new Scanner(System.in);
+        if (selectedFile != null) {
+            List<Assignment> assignments = gradesService.getAssignments(selectedFile);
 
-        if(files.isDirectory()) {
-            String[] fileNames = files.list();
-            if(fileNames != null && fileNames.length > 0) {
-                System.out.println("Select file to view student scores:");
-
-                for(int i = 0; i < fileNames.length; i++) {
-                    System.out.println((i + 1) + ". " + fileNames[i]);
+            if (!assignments.isEmpty()) {
+                for (Assignment assignment : assignments) {
+                    System.out.println(assignment.getNumber() + ". Name: " + assignment.getFirstName() + " " +
+                            assignment.getLastName() + ", Subject: " + assignment.getAssignmentName() +
+                            ", Score: " + assignment.getScore());
                 }
-
-                System.out.print("Enter the number of the file: ");
-                int fileChoice = input.nextInt();
-
-                if(fileChoice >= 1 && fileChoice <= fileNames.length) {
-                    String selectedFile = fileNames[fileChoice - 1];
-                    System.out.println("File you selected: " + selectedFile);
-
-                    String filePath = "files/" + selectedFile;
-                    File file = new File(filePath);
-
-                    try(Scanner reader = new Scanner(file)) {
-
-                        reader.nextLine();
-
-                        while(reader.hasNextLine()) {
-
-                            String line = reader.nextLine();
-                            var columns = line.split(",");
-
-                            int assignmentNum = Integer.parseInt(columns[0]);
-                            String firstName = columns[1];
-                            String lastName = columns[2];
-                            String assignment = columns[3];
-                            int score = Integer.parseInt(columns[4]);
-
-                            System.out.println(assignmentNum + ". Name: " + firstName + " " + lastName + ", " +
-                                    "Subject: " + assignment + ", " + "Score: " + score);
-                        }
-
-                    }  catch (FileNotFoundException e) {
-                        System.out.println("File not found: " + filePath);
-                    }
-                }
-
+            } else {
+                System.out.println("No assignments found for this student.");
             }
         }
     }
+
 
 
     private void displayStudentAverages() {
-        File files = new File("files/");
-        Scanner input = new Scanner(System.in);
+        String selectedFile = displayAllFiles();
 
-        if (files.isDirectory()) {
-            String[] fileNames = files.list();
-            if (fileNames != null && fileNames.length > 0) {
-                System.out.println("Select a file to view student statistics:");
+        if (selectedFile != null) {
+            List<Assignment> assignments = gradesService.getAssignments(selectedFile);
 
-                for (int i = 0; i < fileNames.length; i++) {
-                    System.out.println((i + 1) + ". " + fileNames[i]);
+            if (!assignments.isEmpty()) {
+                String firstName = assignments.get(0).getFirstName();
+                String lastName = assignments.get(0).getLastName();
+                StudentStatistics stats = new StudentStatistics(firstName, lastName, assignments);
+
+                System.out.println("Student Statistics:");
+                System.out.println("Lowest Score: " + stats.getLowScore());
+                System.out.println("Highest Score: " + stats.getHighScore());
+                System.out.println("Average Score: " + String.format("%.2f", stats.getAverageScore()));
+            } else {
+                System.out.println("No assignments found for this student.");
+            }
+        }
+    }
+
+
+    public void createStudentSummaryReport() {
+        String selectedFile = displayAllFiles();
+
+        if (selectedFile != null) {
+            List<Assignment> assignments = gradesService.getAssignments(selectedFile);
+
+            if (!assignments.isEmpty()) {
+                String firstName = assignments.get(0).getFirstName();
+                String lastName = assignments.get(0).getLastName();
+                StudentStatistics stats = new StudentStatistics(firstName, lastName, assignments);
+
+                String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+                String reportFileName = "reports/" + date + "_" + firstName.toLowerCase() + "_" + lastName.toLowerCase() + ".txt";
+
+                try (FileWriter writer = new FileWriter(reportFileName)) {
+                    writer.write(firstName + " " + lastName + "\n");
+                    writer.write("-".repeat(40) + "\n");
+                    writer.write(String.format("Low Score                          %.2f\n", stats.getLowScore()));
+                    writer.write(String.format("High Score                         %.2f\n", stats.getHighScore()));
+                    writer.write(String.format("Average Score                      %.2f\n", stats.getAverageScore()));
+
+                    System.out.println("Summary report created: " + reportFileName);
+                } catch (IOException e) {
+                    System.out.println("Error writing to the report file: " + e.getMessage());
                 }
-
-                System.out.print("Enter the number of the file: ");
-                int fileChoice = input.nextInt();
-
-                if (fileChoice >= 1 && fileChoice <= fileNames.length) {
-                    String selectedFile = fileNames[fileChoice - 1];
-                    System.out.println("File you selected: " + selectedFile);
-
-                    String filePath = "files/" + selectedFile;
-                    File file = new File(filePath);
-
-                    try (Scanner reader = new Scanner(file)) {
-                        reader.nextLine();
-
-                        int totalScore = 0;
-                        int numberOfAssignments = 0;
-                        int lowScore = Integer.MAX_VALUE;
-                        int highScore = Integer.MIN_VALUE;
-
-                        while (reader.hasNextLine()) {
-                            String line = reader.nextLine();
-                            var columns = line.split(",");
-
-                            if (columns.length == 5) {
-                                int score = Integer.parseInt(columns[4]);
-
-                                totalScore += score;
-                                numberOfAssignments++;
-
-                                if (score < lowScore) {
-                                    lowScore = score;
-                                }
-                                if (score > highScore) {
-                                    highScore = score;
-                                }
-                            }
-                        }
-
-                        if (numberOfAssignments > 0) {
-                            double averageScore = (double) totalScore / numberOfAssignments;
-                            System.out.println("Student Statistics:");
-                            System.out.println("Lowest Score: " + lowScore);
-                            System.out.println("Highest Score: " + highScore);
-                            System.out.println("Average Score: " + String.format("%.2f", averageScore));
-                        }
-
-                    } catch (Exception e) {
-                        System.out.println("An error occurred: " + e.getMessage());
-                    }
-                }
+            } else {
+                System.out.println("No assignments found for this student.");
             }
         }
     }
