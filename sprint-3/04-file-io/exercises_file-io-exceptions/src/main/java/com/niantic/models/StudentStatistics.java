@@ -5,18 +5,18 @@ import java.util.List;
 
 public class StudentStatistics {
 
-    private String fistName;
+    private String firstName;
     private String lastName;
     private List<Assignment> assignments;
 
-    public StudentStatistics(String fistName, String lastName, List<Assignment> assignments) {
-        this.fistName = fistName;
+    public StudentStatistics(String firstName, String lastName, List<Assignment> assignments) {
+        this.firstName = firstName;
         this.lastName = lastName;
         this.assignments = assignments;
     }
 
-    public String getFistName() {
-        return fistName;
+    public String getFirstName() {
+        return firstName;
     }
 
     public String getLastName() {

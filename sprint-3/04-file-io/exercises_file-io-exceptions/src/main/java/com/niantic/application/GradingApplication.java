@@ -40,9 +40,12 @@ public class GradingApplication implements Runnable
                     createStudentSummaryReport();
                     break;
                 case 5:
-                    displayAllStudentStatistics();
+                    createAllStudentsReport();
                     break;
                 case 6:
+                    displayAllStudentStatistics();
+                    break;
+                case 7:
                     displayAssignmentStatistics();
                     break;
                 case 0:
@@ -98,7 +101,6 @@ public class GradingApplication implements Runnable
     }
 
 
-
     private void displayStudentAverages() {
         String selectedFile = displayAllFiles();
 
@@ -109,6 +111,7 @@ public class GradingApplication implements Runnable
                 String firstName = assignments.get(0).getFirstName();
                 String lastName = assignments.get(0).getLastName();
                 StudentStatistics stats = new StudentStatistics(firstName, lastName, assignments);
+
 
                 System.out.println("Student Statistics:");
                 System.out.println("Lowest Score: " + stats.getLowScore());
@@ -151,6 +154,60 @@ public class GradingApplication implements Runnable
             }
         }
     }
+
+    private void createAllStudentsReport() {
+
+        String[] fileNames = gradesService.getFileNames();
+
+        List<Assignment> allAssignments = gradesService.getAllAssignments(fileNames);
+
+        // Calculate total students and assignments
+        long totalStudents = allAssignments.stream()
+                .map(assignment -> assignment.getFirstName() + " " + assignment.getLastName())
+                .distinct()
+                .count();
+
+        int totalAssignments = allAssignments.size();
+
+        // Calculate lowest, highest, average score
+        double lowestScore = allAssignments.stream()
+                .mapToDouble(Assignment::getScore)
+                .min()
+                .getAsDouble();
+
+        double highestScore = allAssignments.stream()
+                .mapToDouble(Assignment::getScore)
+                .max()
+                .getAsDouble();
+
+        double averageScore = allAssignments.stream()
+                .mapToDouble(Assignment::getScore)
+                .average()
+                .getAsDouble();
+
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+
+
+        String reportFileName = "reports/" + date + "_all_students.txt";
+
+
+        try (FileWriter writer = new FileWriter(reportFileName)) {
+            writer.write("All Assignments\n");
+            writer.write("-".repeat(60) + "\n");
+            writer.write(String.format("Total Students%47d\n", totalStudents));
+            writer.write(String.format("Total Assignments%44d\n", totalAssignments));
+            writer.write("-".repeat(60) + "\n");
+            writer.write(String.format("Low Score%52.2f\n", lowestScore));
+            writer.write(String.format("High Score%51.2f\n", highestScore));
+            writer.write(String.format("Average Score%48.2f\n", averageScore));
+            writer.write("-".repeat(60) + "\n");
+
+            System.out.println("All students report created: " + reportFileName);
+        } catch (IOException e) {
+            System.out.println("Error writing to the report file: " + e.getMessage());
+        }
+    }
+
 
 
 
