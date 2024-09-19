@@ -144,4 +144,47 @@ public class MySqlProductDao implements ProductDao {
 
         return getProductById(newId);
     }
+
+    public void updateProduct(int productId, Product product) {
+
+        String sql = """
+                UPDATE products
+                SET product_name = ?
+                , supplier_id = ?
+                , category_id = ?
+                , quantity_per_unit = ?
+                , unit_price = ?
+                , units_in_stock = ?
+                , units_on_order = ?
+                , reorder_level = ?
+                , discontinued = ?
+                WHERE product_id = ?
+                """;
+
+        jdbcTemplate.update(sql
+                , product.getProductName()
+                , product.getSupplierId()
+                , product.getCategoryId()
+                , product.getQuantityPerUnit()
+                , product.getUnitPrice()
+                , product.getUnitsInStock()
+                , product.getUnitsOnOrder()
+                , product.getReorderLevel()
+                , product.isDiscontinued()
+                , productId
+        );
+
+    }
+
+    public void deleteProduct(int productId) {
+
+        String sql = """
+                DELETE FROM products
+                WHERE product_id = ?
+                """;
+
+        jdbcTemplate.update(sql, productId);
+
+    }
+
 }

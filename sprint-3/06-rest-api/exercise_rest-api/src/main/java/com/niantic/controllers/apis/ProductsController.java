@@ -33,11 +33,30 @@ public class ProductsController {
     }
 
     @PostMapping("/api/products")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(value = HttpStatus.CREATED)
     public Product addProduct(@RequestBody Product product) {
 
-        return productDao.addProduct(product);
+        Product newProduct = productDao.addProduct(product);
+
+        return newProduct;
+
+    }
+
+    @PutMapping("/api/products/{id}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void updateProduct(@PathVariable int id, @RequestBody Product product) {
+
+        productDao.updateProduct(id, product);
+
+    }
+
+    @DeleteMapping("/api/products/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteProduct(@PathVariable int id) {
+
+        productDao.deleteProduct(id);
 
     }
 
 }
+

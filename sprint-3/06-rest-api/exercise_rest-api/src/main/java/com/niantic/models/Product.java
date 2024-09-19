@@ -33,7 +33,9 @@ public class Product {
         this.discontinued = discontinued;
     }
 
-    // Getters and setters for all fields
+    public Product() {
+
+    }
 
     public int getProductId() {
         return productId;
