@@ -19,7 +19,26 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function loadProducts()
 {
-    // load all products
+    productService.getAllProducts()
+        .then(products => {
+            const categoryContainer = document.getElementById('categories-container');
+            categoryContainer.innerHTML = '';
+
+            products.forEach(product => {
+                const template = document.getElementById('category-template').content.cloneNode(true);
+                template.getElementById('category-header').innerText = product.productName;
+                template.getElementById('category-image').src = `images/${product.productId}.webp`;
+
+                const deleteButton = template.querySelector('.card-footer #delete-button');
+                deleteButton.addEventListener('click', () => {
+                    productService.deleteProduct(product.productId).then(() => {
+                        loadProducts();
+                    })
+                });
+
+                categoryContainer.appendChild(template);
+            })
+        })
 }
 
 function showForm()
