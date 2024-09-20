@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class ProductsController {
 
@@ -40,7 +41,7 @@ public class ProductsController {
 
             } else {
 
-                List<Product> products = productDao.getProducts();
+                List<Product> products = productDao.getAllProducts();
                 return ResponseEntity.ok(products);
             }
         } catch (Exception e) {
@@ -91,7 +92,7 @@ public class ProductsController {
     public ResponseEntity<?> updateProduct(@PathVariable int id, @RequestBody Product product) {
 
         try {
-            var currentProduct = productDao.getProducts();
+            var currentProduct = productDao.getAllProducts();
             if(currentProduct == null) {
 
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);

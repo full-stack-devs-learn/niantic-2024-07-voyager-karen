@@ -6,12 +6,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class MySqlProductDao implements ProductDao {
 
     private final JdbcTemplate jdbcTemplate;
@@ -30,7 +32,7 @@ public class MySqlProductDao implements ProductDao {
     }
 
     @Override
-    public List<Product> getProducts() {
+    public List<Product> getAllProducts() {
         List<Product> products = new ArrayList<>();
 
         String sql = """
