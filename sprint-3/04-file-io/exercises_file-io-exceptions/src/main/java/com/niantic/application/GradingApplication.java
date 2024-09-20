@@ -4,6 +4,7 @@ import com.niantic.models.Assignment;
 import com.niantic.models.StudentStatistics;
 import com.niantic.services.GradesFileService;
 import com.niantic.services.GradesService;
+import com.niantic.services.LoggingService;
 import com.niantic.ui.UserInput;
 
 import java.io.File;
@@ -19,6 +20,9 @@ public class GradingApplication implements Runnable
 {
     private GradesService gradesService = new GradesFileService();
     private final UserInput ui = new UserInput();
+
+    private final LoggingService errorLogger = new LoggingService("errors");
+    private final LoggingService appLogger = new LoggingService("application");
 
     public void run()
     {
@@ -58,9 +62,13 @@ public class GradingApplication implements Runnable
     }
 
     private String displayAllFiles() {
+
+        appLogger.logMessage("Listing all files");
         String[] fileNames = gradesService.getFileNames();
 
         if (fileNames == null || fileNames.length == 0) {
+
+            errorLogger.logMessage("No files found.");
             System.out.println("No files found.");
             return null;
         }
@@ -76,6 +84,8 @@ public class GradingApplication implements Runnable
         if (fileChoice >= 0 && fileChoice < fileNames.length) {
             return fileNames[fileChoice];
         } else {
+
+            errorLogger.logMessage("Invalid choice");
             System.out.println("Invalid choice.");
             return null;
         }
