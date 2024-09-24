@@ -15,10 +15,20 @@
         <input type="text" id="pokemonName" placeholder="Enter Pokemon Name or ID">
         <button id="fetchButton">Fetch Pokemon Data</button>
 
-        <div id="pokemonData" class="pokemon-info"></div>
+        <template id="pokemon-template">
+            <div class="pokemon-info">
+                <h2 class="pokemon-name"></h2>
+                <img class="pokemon-image" src="">
+                <p><strong>Height:</strong> <span class="pokemon-height"></span></p>
+                <p><strong>Weight:</strong> <span class="pokemon-weight"></span></p>
+                <p><strong>Type:</strong> <span class="pokemon-type"></span></p>
+            </div>
+        </template>
+
+        <div id="pokemonData"></div>
     </div>
 
     <script src="js/script.js"></script>
-    
+
 </body>
 </html>

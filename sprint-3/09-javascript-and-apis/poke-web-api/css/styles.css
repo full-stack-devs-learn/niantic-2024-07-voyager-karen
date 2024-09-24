@@ -1,13 +1,18 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
     text-align: center;
-    padding: 20px;
+    height: 100vh;
+    margin: 0;
 }
 
 .container {
-    max-width: 400px;
-    margin: 0 auto;
+    max-width: 100%;
+    width: 400px;
+    text-align: center;
+    box-sizing: border-box;
     background: #ffffff;
     padding: 20px;
     border-radius: 10px;
@@ -19,6 +24,9 @@ input {
     font-size: 16px;
     width: 100%;
     margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
 button {
