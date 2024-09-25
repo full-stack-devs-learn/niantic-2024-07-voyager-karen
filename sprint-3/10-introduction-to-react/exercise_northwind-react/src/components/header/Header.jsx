@@ -7,7 +7,7 @@ export default function Header({onPageChanged})
             <img src="images/logo.png" alt="Northwind Logo" />
             <h1>Northwind Traders</h1>
 
-            <div className="link" onClick={() => onPageChanged("employees")}>Employees</div>
+            <div className="link" onClick={() => onPageChanged("employees")}></div>
         </div>
     )
 }
