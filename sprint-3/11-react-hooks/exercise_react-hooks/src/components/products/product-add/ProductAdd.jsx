@@ -7,10 +7,18 @@ export default function ProductAdd({onCancel, onProductAdded}) {
     const [categoryId, setCategoryId] = useState('');
     const [quantityPerUnit, setQuantityPerUnit] = useState('');
     const [unitPrice, setUnitPrice] = useState('');
+    const [wasValidated, setWasValidated] = useState('');
+
 
     async function addProductHandler(event) {
 
         event.preventDefault()
+
+        // isValid 
+        // check form isValid
+        // update setWasValidated
+        setWasValidated('was-validated')
+    
 
         const newProduct = {
             name: name,
@@ -19,20 +27,25 @@ export default function ProductAdd({onCancel, onProductAdded}) {
             unitPrice: parseFloat(unitPrice)
         }
 
-        await productService.add(newProduct)
+        // await productService.add(newProduct)
 
-        onProductAdded()
+        // onProductAdded()
 
     }
+
+    // bootstrap was-validated 
+    // no-validation on form to use bootstrap validation 
 
     return (
         <div className="container">
         <h2>Add New Product</h2>
-        <form onSubmit={addProductHandler}>
+        <form onSubmit={addProductHandler} className={wasValidated} 
+             noValidate> 
             <div className="row">
                 <label htmlFor="name">Product Name:</label>
                 <input type="text" className="form-control" name="product-name" id="product-name"
                     onChange={(e) => setName(e.target.value)}
+                    required
                 />    
             </div>
             <div className="row">
