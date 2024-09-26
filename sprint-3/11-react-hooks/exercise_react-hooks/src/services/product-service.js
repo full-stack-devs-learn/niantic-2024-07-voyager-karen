@@ -18,6 +18,11 @@ class ProductService {
 
     }
 
+    async delete(id) {
+
+        await axios.delete(`${this.baseUrl}/${id}`)
+    }
+
 }
 
 const productService = new ProductService()

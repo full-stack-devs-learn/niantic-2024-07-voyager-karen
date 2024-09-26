@@ -54,7 +54,7 @@ export default function ProductAdd({onCancel, onProductAdded}) {
                 />    
             </div>
 
-            <button className="btn btn-danger mr-3" type="submit">Add Product</button>
+            <button className="btn btn-success mr-3" type="submit">Add Product</button>
             <button className="btn btn-dark" type="cancel" onClick={onCancel}>Cancel</button>
         </form>
         </div>

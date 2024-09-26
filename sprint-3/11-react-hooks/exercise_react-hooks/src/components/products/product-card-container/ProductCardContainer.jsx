@@ -31,8 +31,15 @@ export default function ProductCardContainer() {
 
         const selectedProduct = products.find(product => product.productName === name);
 
-        setSelectedProductId(productId);
+        setSelectedProductId(selectedProduct.id);
         console.log(name)
+
+    }
+
+    const productDeleted = (id) => {
+
+        const newList = products.filter(product => product.id != id);
+        setProducts(newList)
 
     }
 
@@ -49,6 +56,7 @@ export default function ProductCardContainer() {
                             quantityPerUnit={product.quantityPerUnit}
                             unitPrice={product.unitPrice}
                             onProductSelected={productSelected}
+                            onProductDeleted={productDeleted}
                     ></ProductCard>
                 ))
             }
