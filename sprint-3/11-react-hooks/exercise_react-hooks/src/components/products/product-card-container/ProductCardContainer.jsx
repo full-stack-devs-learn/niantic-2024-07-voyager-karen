@@ -45,6 +45,9 @@ export default function ProductCardContainer() {
                 <ProductCard key={product.id}
                             product={product.name}
                             id={product.id}
+                            categoryId={product.categoryId}
+                            quantityPerUnit={product.quantityPerUnit}
+                            unitPrice={product.unitPrice}
                             onProductSelected={productSelected}
                     ></ProductCard>
                 ))
