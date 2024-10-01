@@ -1,35 +1,50 @@
-import { Link } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
-const CategoryList: React.FC = () => {
-  const [categories, setCategories] = useState<any[]>([]); // Adjust the type according to your needs
+export default function CategoryList() {
 
-  useEffect(() => {
-    loadCategories();
-  }, []);
+      const [categories, setCategories] = useState<any[]>([]);
 
-  const loadCategories = () => {
-    // Fetch your categories here
-    const mockCategories = [
-      { id: 1, name: "Category 1" },
-      { id: 2, name: "Category 2" },
-      { id: 3, name: "Category 3" },
-    ];
-    setCategories(mockCategories);
-  };
+      const location = useLocation();
+      const params = new URLSearchParams(location.search);
 
-  return (
-    <div>
-      <h4>Category List</h4>
-      <ul>
-        {categories.map((category) => (
-          <li key={category.id}>
-            <Link to={`/categories/${category.id}`}>{category.name}</Link> {/* Link to the Category Details page */}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+      const page = params.get("page") ?? 1
 
-export default CategoryList;
+      const prevPage = +page - 1;
+      const nextPage = +page + 1;
+
+      useEffect(() => { loadCategories(); }, [])
+
+      async function loadCategories() {
+
+        // const categories = await categoryService.getCategories(page);
+        // setCategories(categories)
+
+    }
+
+
+      return (
+        <>
+          <h4>Categories List</h4>
+          <ul>
+            <li><Link to="/categories/2">Category 2</Link></li>
+            <li><Link to="/categories/3">Category 3</Link></li>
+            <li><Link to="/categories/4">Category 4</Link></li>
+            <li><Link to="/categories/t">Category 5</Link></li>
+        </ul>
+
+
+          <div>
+            {prevPage > 0 && (
+              <Link className="btn btn-secondary" to={`/categories?page=${prevPage}`}>
+                &lt;&lt;
+              </Link>
+            )}
+            Page {page}
+            <Link className="btn btn-secondary" to={`/categories?page=${nextPage}`}>
+              &gt;&gt;
+            </Link>
+          </div>
+        </>
+      );
+}

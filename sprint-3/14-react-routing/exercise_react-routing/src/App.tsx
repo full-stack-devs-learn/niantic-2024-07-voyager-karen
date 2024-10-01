@@ -5,6 +5,7 @@ import CategoryPage from './components/categories/category-page/CategoryPage';
 import CategoryList from './components/categories/category-list/CategoryList';
 import CategoryDetails from './components/categories/category-details/CategoryDetails';
 import CategoryAdd from './components/categories/category-add/CategoryAdd';
+import CategoryEdit from './components/categories/category-edit/CategoryEdit';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="" element={<CategoryList />} />
             <Route path=":categoryId" element={<CategoryDetails />} />
             <Route path="add" element={<CategoryAdd />} />
+            <Route path=":categoryId/edit" element={<CategoryEdit />} />
           </Route>
 
         </Routes>
