@@ -12,7 +12,7 @@ export default function CategoryList() {
   useEffect(() => { loadCategories() }, []); 
 
   async function loadCategories() {
-``
+
     try {
         const categories = await categoryService.getCategories();
         console.log("Fetched categories", categories);
@@ -26,18 +26,20 @@ export default function CategoryList() {
 
   return (
     <>
-    <h4>Categories List</h4>
-    <Link className="btn btn-success" to="/categories/add">Add</Link>
-    <ul>
-        {
-            categories.map((category: Category) => (
-                <li><Link to={`/category/${category.categoryId}`}>{category.categoryName} {category.description}</Link></li>
-            ))
-        }
-
-    </ul>
-
+      <h4>Categories List</h4>
+      <Link className="btn btn-success" to="/categories/add">Add New Category</Link>
+      <ul>
+        {categories.map((category: Category) => (
+          <li key={category.categoryId}>
+            <Link to={`/categories/${category.categoryId}`}>
+              {category.categoryName} {category.description}
+            </Link>
+            <Link className="btn btn-primary btn-sm" to={`/categories/${category.categoryId}/edit`}>
+              Edit
+            </Link>
+          </li>
+        ))}
+      </ul>
     </>
-  )
-
+  );
 }

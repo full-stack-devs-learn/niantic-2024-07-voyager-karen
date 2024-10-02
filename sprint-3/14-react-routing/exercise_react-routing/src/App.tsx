@@ -20,7 +20,7 @@ function App() {
             <Route path="" element={<CategoryList />} />
             <Route path=":categoryId" element={<CategoryDetails />} />
             <Route path="add" element={<CategoryAdd />} />
-            <Route path=":categoryId/edit" element={<CategoryEdit />} />
+            <Route path="/categories/:id/edit" element={<CategoryEdit />} />
           </Route>
 
         </Routes>
